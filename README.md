@@ -1,5 +1,10 @@
 # 阿里云域名 MCP 服务器
 
+[![npm version](https://img.shields.io/npm/v/mcp-aliyun-domain.svg)](https://www.npmjs.com/package/mcp-aliyun-domain)
+[![npm downloads](https://img.shields.io/npm/dm/mcp-aliyun-domain.svg)](https://www.npmjs.com/package/mcp-aliyun-domain)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![MCP Registry](https://img.shields.io/badge/MCP-Registry-blue)](https://registry.modelcontextprotocol.io/servers/io.github.lzx3in/mcp-aliyun-domain)
+
 MCP 服务器，集成阿里云域名 API，支持从 AI 助手直接查询域名可用性、获取域名详情、管理域名列表和创建域名注册订单。
 
 ## 功能工具
