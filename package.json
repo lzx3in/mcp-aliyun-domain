@@ -1,0 +1,55 @@
+{
+  "name": "mcp-aliyun-domain",
+  "version": "0.1.0",
+  "description": "MCP server for Alibaba Cloud Domain API - Check domain availability, query domain details, list domains, and create registration orders",
+  "type": "module",
+  "bin": {
+    "mcp-aliyun-domain": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "aliyun",
+    "alibaba-cloud",
+    "domain",
+    "domain-check",
+    "domain-registration",
+    "domain-management",
+    "model-context-protocol"
+  ],
+  "author": "lzx3in <lzx3in@qq.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lzx3in/mcp-aliyun-domain"
+  },
+  "bugs": {
+    "url": "https://github.com/lzx3in/mcp-aliyun-domain/issues"
+  },
+  "homepage": "https://github.com/lzx3in/mcp-aliyun-domain#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@alicloud/credentials": "^2.4.4",
+    "@alicloud/domain20180129": "^5.0.3",
+    "@alicloud/openapi-core": "^1.0.0",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "dotenv": "^17.4.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.2",
+    "tsx": "^4.19.0",
+    "typescript": "^6.0.3"
+  }
+}
