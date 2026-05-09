@@ -1,0 +1,38 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.lzx3in/mcp-aliyun-domain",
+  "description": "MCP server for Alibaba Cloud Domain - check availability, query details, list domains, create orders",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/lzx3in/mcp-aliyun-domain.git",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "mcp-aliyun-domain",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "ALIBABA_CLOUD_ACCESS_KEY_ID",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true,
+          "description": "阿里云 AccessKey ID"
+        },
+        {
+          "name": "ALIBABA_CLOUD_ACCESS_KEY_SECRET",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true,
+          "description": "阿里云 AccessKey Secret"
+        }
+      ]
+    }
+  ]
+}
