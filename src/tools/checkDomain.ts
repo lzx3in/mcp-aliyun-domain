@@ -69,6 +69,7 @@ export function registerCheckDomain(server: McpServer) {
             type: 'text',
             text: `❌ 查询域名可用性失败: ${errorMessage}\n\n请检查:\n1. 网络连接是否正常\n2. 阿里云凭证是否配置正确\n3. 域名格式是否正确`,
           }],
+          isError: true,
         };
       }
     }

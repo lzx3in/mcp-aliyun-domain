@@ -49,6 +49,7 @@ export function registerCreateOrder(server: McpServer) {
             type: 'text',
             text: `⚠️ 域名 "${domainName}" 不可注册 (code: ${avail})，请先使用 check_domain 确认`,
           }],
+          isError: true,
         };
       }
 
@@ -82,6 +83,7 @@ export function registerCreateOrder(server: McpServer) {
             type: 'text',
             text: `❌ 创建域名订单失败: ${errorMessage}\n\n请检查:\n1. 域名是否可注册\n2. 注册者模板ID是否正确\n3. 阿里云账户余额是否充足`,
           }],
+          isError: true,
         };
       }
     }

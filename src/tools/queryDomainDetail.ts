@@ -57,6 +57,7 @@ export function registerQueryDomainDetail(server: McpServer) {
 3. 您没有该域名的管理权限
 
 提示：请使用 check_domain 工具检查域名是否可注册` }],
+          isError: true,
         };
       }
 
@@ -104,6 +105,7 @@ export function registerQueryDomainDetail(server: McpServer) {
             type: 'text',
             text: `❌ 查询域名详情失败: ${errorMessage}\n\n请检查:\n1. 域名是否存在\n2. 阿里云凭证是否正确`,
           }],
+          isError: true,
         };
       }
     }

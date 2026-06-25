@@ -80,6 +80,7 @@ export function registerListDomains(server: McpServer) {
             type: 'text',
             text: `❌ 列出域名失败: ${errorMessage}\n\n请检查:\n1. 阿里云凭证是否正确\n2. 是否有域名权限`,
           }],
+          isError: true,
         };
       }
     }
