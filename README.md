@@ -69,29 +69,56 @@ export ALIBABA_CLOUD_ACCESS_KEY_SECRET="your-access-key-secret"
 
 ### OpenClaw
 
-在 OpenClaw 配置文件中添加：
+**方式一：CLI 命令（推荐）**
 
-```yaml
-mcpServers:
-  aliyun-domain:
-    command: npx
-    args: ["-y", "mcp-aliyun-domain"]
-    env:
-      ALIBABA_CLOUD_ACCESS_KEY_ID: "${ALIBABA_CLOUD_ACCESS_KEY_ID}"
-      ALIBABA_CLOUD_ACCESS_KEY_SECRET: "${ALIBABA_CLOUD_ACCESS_KEY_SECRET}"
+```bash
+openclaw mcp add aliyun-domain \
+  --command npx \
+  --arg -y \
+  --arg mcp-aliyun-domain \
+  --env ALIBABA_CLOUD_ACCESS_KEY_ID=your-key \
+  --env ALIBABA_CLOUD_ACCESS_KEY_SECRET=your-secret
 ```
 
-### Claude Desktop
+添加后验证：
 
-在 `claude_desktop_config.json` 中添加：
+```bash
+openclaw mcp probe aliyun-domain   # 应显示 4 tools
+openclaw mcp reload                # 通知网关加载新配置
+```
+
+**方式二：手动编辑配置文件**
+
+在 `~/.openclaw/openclaw.json` 的 `mcp.servers` 中添加：
 
 ```json
 {
-  "mcpServers": {
+  "mcp": {
+    "servers": {
+      "aliyun-domain": {
+        "command": "npx",
+        "args": ["-y", "mcp-aliyun-domain"],
+        "env": {
+          "ALIBABA_CLOUD_ACCESS_KEY_ID": "your-key",
+          "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "your-secret"
+        }
+      }
+    }
+  }
+}
+```
+
+### OpenCode
+
+在 `~/.config/opencode/opencode.jsonc` 中的 `mcp` 字段添加：
+
+```jsonc
+{
+  "mcp": {
     "aliyun-domain": {
-      "command": "npx",
-      "args": ["-y", "mcp-aliyun-domain"],
-      "env": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-aliyun-domain"],
+      "environment": {
         "ALIBABA_CLOUD_ACCESS_KEY_ID": "your-key",
         "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "your-secret"
       }
@@ -100,9 +127,9 @@ mcpServers:
 }
 ```
 
-### Qoder
+### Qoder / Qoder CN
 
-在 Qoder MCP 配置中添加：
+在 Qoder MCP 配置文件中添加（Qoder CN 路径为 `~/.config/QoderCN/SharedClientCache/mcp.json`）：
 
 ```json
 {
