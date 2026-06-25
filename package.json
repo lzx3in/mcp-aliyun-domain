@@ -1,7 +1,7 @@
 {
   "name": "mcp-aliyun-domain",
   "mcpName": "io.github.lzx3in/mcp-aliyun-domain",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "MCP server for Alibaba Cloud Domain API - Check domain availability, query domain details, list domains, and create registration orders",
   "type": "module",
   "bin": {
