@@ -254,6 +254,24 @@ npm run dev       # 使用 tsx 运行（开发模式）
 npm run build     # 编译到 dist/ 目录
 ```
 
+## 发布
+
+项目使用 GitHub Actions 自动发布到 NPM 和 MCP Registry。推送 `v*` 标签即可触发自动发布流程：
+
+```bash
+# 1. 更新版本号（package.json 和 server.json 需保持一致）
+# 2. 提交代码
+git add -A && git commit -m "chore: bump version to x.y.z"
+# 3. 打标签并推送
+git tag vx.y.z && git push origin main --tags
+```
+
+**前置条件：** 需在 npmjs.com 的包设置中配置 **Trusted Publishers**（推荐，无需存储 token）：
+- Provider: GitHub Actions
+- Organization: `lzx3in`
+- Repository: `mcp-aliyun-domain`
+- Workflow filename: `publish.yml`
+
 ## 许可证
 
 MIT
