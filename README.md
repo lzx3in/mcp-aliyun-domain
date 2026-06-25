@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MCP Registry](https://img.shields.io/badge/MCP-Registry-blue)](https://registry.modelcontextprotocol.io/servers/io.github.lzx3in/mcp-aliyun-domain)
 
+> **免责声明：** 本项目为第三方社区开源工具，与阿里巴巴集团及阿里云无任何关联，非阿里云官方产品。阿里云（Aliyun）及相关标识是阿里巴巴集团的商标。使用本项目前请自行评估风险。
+
 MCP 服务器，集成阿里云域名 API，支持从 AI 助手直接查询域名可用性、获取域名详情、管理域名列表和创建域名注册订单。
 
 ## 功能工具
