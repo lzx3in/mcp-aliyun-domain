@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Publish to NPM
-        run: npm publish --provenance --access public || true
+        run: npm publish --provenance --access public
 
   publish-mcp-registry:
     name: Publish to MCP Registry
