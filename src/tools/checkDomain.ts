@@ -2,16 +2,7 @@ import * as $Domain from '@alicloud/domain20180129';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { createClient } from '../config.js';
-
-const AvailMap: Record<string, string> = {
-  '1': '可注册',
-  '3': '预登记',
-  '4': '可删除预订',
-  '0': '不可注册',
-  '-1': '异常',
-  '-2': '暂停注册',
-  '-3': '黑名单',
-};
+import { AvailMap } from '../constants.js';
 
 export function registerCheckDomain(server: McpServer) {
   server.registerTool(

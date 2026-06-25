@@ -2,19 +2,7 @@ import * as $Domain from '@alicloud/domain20180129';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { createClient } from '../config.js';
-
-// 域名状态映射
-const DomainStatusMap: Record<string, string> = {
-  '1': '需要设置DNS',
-  '2': '需要实名认证',
-  '3': '正常',
-  '4': '需要续费',
-  '5': '过期删除期',
-  '6': '等待赎回',
-  '7': '注册局锁定',
-  '8': '注册局设置删除期',
-  '9': '注册商设置删除期',
-};
+import { DomainStatusMap } from '../constants.js';
 
 export function registerListDomains(server: McpServer) {
   server.registerTool(
@@ -64,7 +52,7 @@ export function registerListDomains(server: McpServer) {
       for (const d of data) {
         let line = `• ${d.domainName}`;
         if (d.expirationDate) line += ` [到期: ${d.expirationDate}]`;
-        if (d.domainStatus) line += ` (状态: ${d.domainStatus})`;
+        if (d.domainStatus) line += ` (状态: ${DomainStatusMap[String(d.domainStatus)] || d.domainStatus})`;
         if (d.domainAuditStatus) line += ` [审核: ${d.domainAuditStatus}]`;
         if (d.autoRenewEnabled !== undefined) line += ` [自动续费: ${d.autoRenewEnabled ? '开启' : '关闭'}]`;
         text += line + '\n';
