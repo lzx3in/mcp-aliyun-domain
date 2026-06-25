@@ -66,6 +66,7 @@ export function registerListDomains(server: McpServer) {
         if (d.expirationDate) line += ` [到期: ${d.expirationDate}]`;
         if (d.domainStatus) line += ` (状态: ${d.domainStatus})`;
         if (d.domainAuditStatus) line += ` [审核: ${d.domainAuditStatus}]`;
+        if (d.autoRenewEnabled !== undefined) line += ` [自动续费: ${d.autoRenewEnabled ? '开启' : '关闭'}]`;
         text += line + '\n';
       }
 
