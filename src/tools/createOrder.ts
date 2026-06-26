@@ -2,6 +2,7 @@ import * as $Domain from '@alicloud/domain20180129';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { createClient } from '../config.js';
+import { withRetry } from '../retry.js';
 
 export function registerCreateOrder(server: McpServer) {
   server.registerTool(
@@ -40,7 +41,7 @@ export function registerCreateOrder(server: McpServer) {
       checkReq.feePeriod = period;
       checkReq.lang = 'zh';
 
-      const checkResp = await client.checkDomain(checkReq);
+      const checkResp = await withRetry(() => client.checkDomain(checkReq));
       const avail = String(checkResp.body?.avail);
 
       if (avail !== '1') {
@@ -63,7 +64,7 @@ export function registerCreateOrder(server: McpServer) {
       req.couponNo = couponNo ?? '';
       req.lang = 'zh';
 
-      const resp = await client.saveSingleTaskForCreatingOrderActivate(req);
+      const resp = await withRetry(() => client.saveSingleTaskForCreatingOrderActivate(req));
       const body = resp.body;
 
       let text = `域名注册任务已提交!\n`;

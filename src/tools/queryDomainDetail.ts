@@ -2,6 +2,7 @@ import * as $Domain from '@alicloud/domain20180129';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { createClient } from '../config.js';
+import { withRetry } from '../retry.js';
 import { DomainStatusMap, EmailVerifyStatusMap } from '../constants.js';
 
 export function registerQueryDomainDetail(server: McpServer) {
@@ -22,7 +23,7 @@ export function registerQueryDomainDetail(server: McpServer) {
       req.domainName = domainName;
       req.lang = 'zh';
 
-      const resp = await client.queryDomainByDomainName(req);
+      const resp = await withRetry(() => client.queryDomainByDomainName(req));
       const body = resp.body;
       const d = body;
 

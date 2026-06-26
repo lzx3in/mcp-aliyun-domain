@@ -2,6 +2,7 @@ import * as $Domain from '@alicloud/domain20180129';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { createClient } from '../config.js';
+import { withRetry } from '../retry.js';
 import { AvailMap } from '../constants.js';
 
 export function registerCheckDomain(server: McpServer) {
@@ -30,7 +31,7 @@ export function registerCheckDomain(server: McpServer) {
       req.feePeriod = feePeriod;
       req.lang = 'zh';
 
-      const resp = await client.checkDomain(req);
+      const resp = await withRetry(() => client.checkDomain(req));
       const body = resp.body;
       const availText = AvailMap[String(body?.avail)] ?? '未知';
 

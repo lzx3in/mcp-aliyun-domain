@@ -2,6 +2,7 @@ import * as $Domain from '@alicloud/domain20180129';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { createClient } from '../config.js';
+import { withRetry } from '../retry.js';
 import { DomainStatusMap } from '../constants.js';
 
 export function registerListDomains(server: McpServer) {
@@ -34,7 +35,7 @@ export function registerListDomains(server: McpServer) {
         req.keyWord = keyWord;
       }
 
-      const resp = await client.queryDomainList(req);
+      const resp = await withRetry(() => client.queryDomainList(req));
       const body = resp.body;
       // 修复：数据在 body.data.domain 中
       const data = body?.data?.domain ?? [];
